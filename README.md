@@ -1,6 +1,6 @@
 # Stock Market Wizard
 
-This Python script compares financial data for a user-defined list of publicly traded companies against the S&P 500. The script will generate a report of all companies from this list whose 1-day stock price % changes positively or negatively exceed the 1-day change of the market (S&P 500) by more than a user-specified threshold.
+This Python script compares financial data for a user-defined list of publicly traded companies against the S&P 500 (or some other basis). The script will generate a report of all companies from this list whose 1-day stock price % changes positively or negatively exceed the 1-day change of the basis by more than a user-specified threshold.
 
 ## Source Code Layout
 
@@ -30,7 +30,7 @@ Note: [pip](https://pypi.org/project/pip/) is Python's default package manager. 
 
 ## Configuration
 
-You must generate file called _config.json_ that the Python script uses for certain important information. The can be placed anywhere but the easiest place to put it is in the same folder as the Python script (if you would like to place it elsewhere, see section below).
+You must generate a file called _config.json_ that the Python script uses for certain important information. It can be placed anywhere - this is called the "config path" of the application. The simplest config path you can use is the same folder as the Python script!
 
 Below is an example config file that is subsequently explained:
 ```
@@ -56,11 +56,11 @@ Below is an example config file that is subsequently explained:
 * __sender__ => Email address of the sender of the report (must be Gmail).
 * __recipient__ => Email address of the recipient of the report (can be anything).
 
-You must also enable the Gmail API on the account you wish to send the report from. Instructions for doing so can be found [here](https://developers.google.com/gmail/api/quickstart/python). The steps specified here will generate a file called _credentials.json_ for you. You must place this file in the same folder as config.json. The first time you run the Python script, you will be redirected to Gmail to authorize the new app. Doing so will result in the automatic creation of a file called _token.json_ in the same folder. As long as token.json exists, you will not be redirected to Gmail when running the script.
+You must also enable the Gmail API on the account you wish to send the report from. Instructions for doing so can be found [here](https://developers.google.com/gmail/api/quickstart/python). The steps specified here will generate a file called _credentials.json_ for you. You must place this file in the same folder as config.json (i.e., the config path). The first time you run the Python script, you will be redirected to Gmail to authorize the app. Doing so will result in the automatic creation of a file called _token.json_ in the same folder. As long as token.json exists and is valid, you will not be redirected to Gmail when running the script subsequently.
 
 ## Running the Script
 
-To run the Python script (after it is properly configured), you the following command:
+To run the Python script (after it is properly configured), use the following command:
 
 ```
 python [path_to_script]/fin_app.py ([path_to_config_folder])
